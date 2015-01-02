@@ -1,4 +1,4 @@
 YouPi
 =====
 
-A remote youtube player for a Raspberry Pi
+A remote youtube search GUI for a Raspberry Pi running XBMC/Kodi
