@@ -22,7 +22,7 @@
             var url=entry.content[5];
             var img="<img src='"+thumb+"'>";
             var id=entry.id;
-            img="<a href='http://"+server+":8080/cgi-bin/youplayer.cgi?id="+id+"&qlty="+qlty+"'>"+img+"</a>";
+            img="<a href='http://"+server+":8080/cgi-bin/youplayer.cgi?id="+id+"&qlty="+qlty+"&delay=5'>"+img+"</a>";
             $("#results").append(img);
           });
         });
