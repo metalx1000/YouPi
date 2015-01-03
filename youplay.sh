@@ -23,7 +23,7 @@ ps ux|grep youtube|awk '{print $2}'|while read pid;do kill $pid;done
 
 echo "<h2>Retrieving Video</h2>"
 rm $video*
-youtube-dl --no-part $q "https://www.youtube.com/watch?v=$id" -o $video &
+/usr/local/bin/youtube-dl --no-part $q "https://www.youtube.com/watch?v=$id" -o $video &
 sleep 10
 echo "<h2>Loading Video</h2>"
 sleep $delay

@@ -12,7 +12,7 @@ busybox="/bin/busybox"
 www="/etc/www"
 cgi="$www/cgi-bin"
 cmd="$busybox httpd -p 8080 -h $www"
-youtubedl="/usr/bin/youtube-dl"
+youtubedl="/usr/local/bin/youtube-dl"
 
 cd $cgi
 rm *

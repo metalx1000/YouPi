@@ -12,10 +12,11 @@ busybox="/bin/busybox"
 www="/etc/www"
 cgi="$www/cgi-bin"
 cmd="$busybox httpd -p 8080 -h $www"
-youtubedl="/usr/bin/youtube-dl"
+youtubedl="/usr/local/bin/youtube-dl"
 
 if [ ! -f $busybox ] || [ ! -f $youtubedl ]; then
-  apt-get update && apt-get install busybox youtube-dl -y
+  apt-get update && apt-get install busybox -y
+  wget http://yt-dl.org/downloads/2015.01.02/youtube-dl -O $youtubedl
 fi
 
 sed -i "/exit 0/d" /etc/rc.local
