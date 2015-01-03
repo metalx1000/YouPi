@@ -25,7 +25,13 @@ echo "exit 0" >> /etc/rc.local
 
 mkdir -p $cgi
 cd $cgi
+rm *
 wget --no-check-certificate "https://raw.githubusercontent.com/metalx1000/YouPi/master/www/cgi-bin/youplayer.cgi"
 chmod +x *.cgi
+
+cd /usr/local/bin/
+rm youplay.sh
+wget "https://raw.githubusercontent.com/metalx1000/YouPi/master/youplay.sh"
+chmod +x youplay.sh
 
 $cmd
