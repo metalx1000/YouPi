@@ -12,13 +12,14 @@ busybox="/bin/busybox"
 www="/etc/www"
 cgi="$www/cgi-bin"
 cmd="$busybox httpd -p 8080 -h $www"
+youtubedl="/usr/bin/youtube-dl"
 
-if [ ! -f $busybox ]; then
-  apt-get update && apt-get install busybox
+if [ ! -f $busybox ] || [ ! -f $youtubedl ]; then
+  apt-get update && apt-get install busybox youtube-dl
 fi
 
-sed -i "s/exit 0//g" /etc/rc.local
-sed -i "s/$cmd//g" /etc/rc.local
+sed -i "/exit 0/d" /etc/rc.local
+sed -i "/$cmd/d" /etc/rc.local
 echo "$cmd" >> /etc/rc.local
 echo "exit 0" >> /etc/rc.local
 

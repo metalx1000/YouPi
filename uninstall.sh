@@ -13,7 +13,7 @@ www="/etc/www"
 cgi="$www/cgi-bin"
 cmd="$busybox httpd -p 8080 -h $www"
 
-sed -i "s/$cmd//g" /etc/rc.local
+sed -i "/$cmd/d" /etc/rc.local
 
 rm -fr $www
 
