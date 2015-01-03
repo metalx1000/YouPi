@@ -15,12 +15,12 @@ cmd="$busybox httpd -p 8080 -h $www"
 youtubedl="/usr/local/bin/youtube-dl"
 
 rm $youtubedl
-wget http://yt-dl.org/downloads/2015.01.02/youtube-dl -O $youtubedl
+wget "http://yt-dl.org/downloads/2015.01.02/youtube-dl" -O $youtubedl
 chmod +x $youtubedl
 
 cd $cgi
 rm *
-wget "http://raw.githubusercontent.com/metalx1000/YouPi/master/www/cgi-bin/youplayer.cgi"
+wget --no-check-certificate "https://raw.githubusercontent.com/metalx1000/YouPi/master/www/cgi-bin/youplayer.cgi"
 chmod +x *.cgi
 
 cd /usr/local/bin/
