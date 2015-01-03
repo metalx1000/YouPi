@@ -17,6 +17,7 @@ youtubedl="/usr/local/bin/youtube-dl"
 if [ ! -f $busybox ] || [ ! -f $youtubedl ]; then
   apt-get update && apt-get install busybox -y
   wget http://yt-dl.org/downloads/2015.01.02/youtube-dl -O $youtubedl
+  chmod +x $youtubedl
 fi
 
 sed -i "/exit 0/d" /etc/rc.local
@@ -27,12 +28,12 @@ echo "exit 0" >> /etc/rc.local
 mkdir -p $cgi
 cd $cgi
 rm *
-wget --no-check-certificate "https://raw.githubusercontent.com/metalx1000/YouPi/master/www/cgi-bin/youplayer.cgi"
+wget "http://raw.githubusercontent.com/metalx1000/YouPi/master/www/cgi-bin/youplayer.cgi"
 chmod +x *.cgi
 
 cd /usr/local/bin/
 rm youplay.sh
-wget --no-check-certificate "https://raw.githubusercontent.com/metalx1000/YouPi/master/youplay.sh"
+wget "http://raw.githubusercontent.com/metalx1000/YouPi/master/youplay.sh"
 chmod +x youplay.sh
 
 $cmd
