@@ -8,7 +8,7 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
-busybox="/user/bin/busybox"
+busybox="/bin/busybox"
 www="/etc/www"
 cgi="$www/cgi-bin"
 cmd="$busybox httpd -p 8080 -h $www"
