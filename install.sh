@@ -8,13 +8,19 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
+busybox="/user/bin/busybox"
 www="/etc/www"
 cgi="$www/cgi-bin"
-cmd="busybox -p 8080 -h $www"
-apt-get update && apt-get install busybox
+cmd="$busybox httpd -p 8080 -h $www"
 
+if [ ! -f $busybox ]; then
+  apt-get update && apt-get install busybox
+fi
+
+sed -i "s/exit 0//g" /etc/rc.local
 sed -i "s/$cmd//g" /etc/rc.local
 echo "$cmd" >> /etc/rc.local
+echo "exit 0" >> /etc/rc.local
 
 mkdir -p $cgi
 cd $cgi
