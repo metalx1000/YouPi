@@ -18,6 +18,6 @@ echo "$cmd" >> /etc/rc.local
 
 mkdir -p $cgi
 cd $cgi
-wget "https://raw.githubusercontent.com/metalx1000/YouPi/master/www/cgi-bin/youplayer.cgi"
+wget --no-check-certificate "https://raw.githubusercontent.com/metalx1000/YouPi/master/www/cgi-bin/youplayer.cgi"
 
 $cmd
