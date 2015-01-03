@@ -14,6 +14,9 @@ cgi="$www/cgi-bin"
 cmd="$busybox httpd -p 8080 -h $www"
 youtubedl="/usr/local/bin/youtube-dl"
 
+rm $youtubedl
+wget http://yt-dl.org/downloads/2015.01.02/youtube-dl -O $youtubedl
+
 cd $cgi
 rm *
 wget --no-check-certificate "https://raw.githubusercontent.com/metalx1000/YouPi/master/www/cgi-bin/youplayer.cgi"
