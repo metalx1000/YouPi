@@ -15,7 +15,7 @@ cmd="$busybox httpd -p 8080 -h $www"
 youtubedl="/usr/bin/youtube-dl"
 
 if [ ! -f $busybox ] || [ ! -f $youtubedl ]; then
-  apt-get update && apt-get install busybox youtube-dl
+  apt-get update && apt-get install busybox youtube-dl -y
 fi
 
 sed -i "/exit 0/d" /etc/rc.local
