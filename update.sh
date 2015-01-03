@@ -4,7 +4,7 @@
 if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root" 
    echo "Trying to restart script as root"
-   sudo $?
+   sudo $0
    exit
 fi
 
