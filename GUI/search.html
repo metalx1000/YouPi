@@ -1,12 +1,25 @@
 <html>
 <head>
   <style>
-    button,input,select{
-      font-size: 50px;
-    }
+button,input,select{
+  font-size: 50px;
+}
   </style>
+  <title>YouPi Search</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
- 
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <style>
+      .thumb{
+        border-width:1px;
+        border-style:solid;
+        padding: 50px;
+        height: 300px;
+      }
+  </style> 
   <script>
     var server="192.168.1.140"
     $(document).ready(function () {
@@ -18,12 +31,22 @@
           $("#results").html('');
           items=data.data.items;
           items.forEach(function(entry){
+            var title=entry.title;
             var thumb=entry.thumbnail.hqDefault;
             var url=entry.content[5];
-            var img="<img src='"+thumb+"'>";
+
+            var duration=entry.duration;
+            var minutes = Math.floor(duration / 60);
+            var seconds = duration % 60;
+            seconds = Math.ceil(seconds);
+            if(seconds.toString().length == 1){seconds="0"+seconds}
+            var time=minutes + ":" + seconds;
+
+            var img="<img class='col-sm-12' src='"+thumb+"'>";
             var id=entry.id;
-            img="<a href='http://"+server+":8080/cgi-bin/youplayer.cgi?id="+id+"&qlty="+qlty+"&delay=10'>"+img+"</a>";
-            $("#results").append(img);
+            img="<a class='col-sm-12' href='http://"+server+":8080/cgi-bin/youplayer.cgi?id="+id+"&qlty="+qlty+"&delay=10'>"+img+"</a>";
+            var div="<div class='col-sm-4 thumb'>"+img+" "+title+" - <b>"+time+"</b></div>";
+            $("#results").append(div);
           });
         });
       });
@@ -40,16 +63,13 @@
  
 </head>
 <body>
-<!--
-  <button id="kill">Kill XBMC</button>
-  <button id="start">Start XBMC</button>
-  <hr>
--->
-<input id="search" />
-<select id="qlty">
-  <option val="22">22</option>
-  <option val="18">18</option>
-</select>
-<button id="search_btn">Search</button>
-<div id="results"></div>
+<div class="container">
+    <input id="search" />
+    <select id="qlty">
+      <option val="22">22</option>
+      <option val="18">18</option>
+    </select>
+    <button id="search_btn">Search</button>
+    <div id="results" class="row"></div>
+</div>
 </body> 
