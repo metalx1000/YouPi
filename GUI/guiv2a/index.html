@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Include meta tag to ensure proper rendering and touch zooming -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Include stylesheets 
+  <link rel="stylesheet" href="css/jquery.mobile.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  -->
+  <!-- Include JavaScript libraries -->
+  <script src="js/jquery.js"></script>
+  <!--<script src="js/bootstrap.js"></script>-->
+  <!--<script src="js/jquery.mobile.js"></script>-->
+
+  <script>
+  $(document).ready(function(){
+    var q = "linux";
+    var key = "AIzaSyD3N8mzFLJC6fNSIcMpsaBd3EmEfBsH_9g";
+    var url = "https://www.googleapis.com/youtube/v3/search?q="+q+"&key="+key+"&part=snippet";
+    $.getJSON(url, function( data ) {
+      for(var i=0;i<data.items.length;i++){
+        var thumb = data.items[i].snippet.thumbnails.default.url;
+        $("#results").append("<img src='"+thumb+"'>");
+      }
+    });
+
+  });
+  </script>
+</head>
+<body>
+  <div id="results"></div>
+</body>
+</html>
